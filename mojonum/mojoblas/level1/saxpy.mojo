@@ -1,14 +1,16 @@
 from collections import InlineList
 
-fn sdot(n: Int, sx: InlineList[Float32], incx: Int,
-        sy: InlineList[Float32], incy: Int, index_offset: Int = 1) -> Float32:
+fn saxpy(n: Int, sa: Float32, sx: InlineList[Float32], incx: Int,
+        inout sy: InlineList[Float32], incy: Int, index_offset: Int = 1):
     """
-    This function forms the dot product of two vectors,
+    This function forms a constant times a vector plus a vector.
     uses unrolled loops for increments equal to one.
 
     Arguments:
     n :
         Number of elements in the input vectors.
+    sa :
+        Real, specifies the scalar alpha.
     sx:
         Real array, dimension (1 + (n - 1) * aindex_offset(incx))
     incx:
@@ -19,29 +21,27 @@ fn sdot(n: Int, sx: InlineList[Float32], incx: Int,
         Storage spacing between elements of sy.
     index_offset:
         Index offset.
-
-    Return:
-        The dot product of two vectors.
     """
 
-    var stemp: Float32 = 0.0
     if n <= 0:
-        return stemp
+        return
+    if sa == 0.0:
+        return
     if incx == 1 and incy == 1:
         # code for both increments equal to 1
-        var m = n % 5
+        var m = n % 4
         if m != 0:
             for i in range(1, m + 1):
-                stemp += sx[i - index_offset] * sy[i - index_offset]
-            if n < 5:
-                return stemp
+                sy[i - index_offset] += sa * sx[i - index_offset]
+        if n < 4:
+            return
         var mp1 = m + 1
-        for i in range(mp1, n + 1, 5):
-            stemp += (sx[i - index_offset]*sy[i - index_offset] +
-                      sx[i - index_offset + 1]*sy[i - index_offset + 1] +
-                      sx[i - index_offset + 2]*sy[i - index_offset + 2] +
-                      sx[i - index_offset + 3]*sy[i - index_offset + 3] +
-                      sx[i - index_offset + 4]*sy[i - index_offset + 4])
+        if n >= 4:
+            for i in range(mp1, n + 1, 4):
+                sy[i - index_offset] += sa * sx[i - index_offset]
+                sy[i - index_offset + 1] += sa * sx[i - index_offset + 1]
+                sy[i - index_offset + 2] += sa * sx[i - index_offset + 2]
+                sy[i - index_offset + 3] += sa * sx[i - index_offset + 3]
     else:
         # code for unequal increments or equal increments not equal to 1
         var ix: Int = 1
@@ -51,7 +51,6 @@ fn sdot(n: Int, sx: InlineList[Float32], incx: Int,
         if incy < 0:
             iy = (-n + 1) * incy + 1
         for _ in range(1, n + 1):
-            stemp += sx[ix - index_offset] * sy[iy - index_offset]
+            sy[iy - index_offset] += sa * sx[ix - index_offset]
             ix += incx
             iy += incy
-    return stemp
