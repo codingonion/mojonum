@@ -1,7 +1,7 @@
 from testing import assert_almost_equal
 from collections import InlineList
 
-import mojonum as mn
+import monum as mn
 
 fn test_saxpy_with_unit_increment() raises:
     """Test saxpy with unit increment."""

@@ -1,7 +1,7 @@
 from testing import assert_almost_equal
 from collections import InlineList
 
-import mojonum as mn
+import monum as mn
 
 fn test_sdot_with_basic() raises:
     """Test sdot with unit increment."""
