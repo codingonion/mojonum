@@ -4,17 +4,17 @@ fn sdot(n: Int, sx: InlineList[Float32], incx: Int,
         sy: InlineList[Float32], incy: Int, index_offset: Int = 1) -> Float32:
     """
     This function forms the dot product of two vectors,
-    uses unrolled loops for increments equal to one.
+    uses unrolled loops for increments equal to 1.
 
     Arguments:
     n :
         Number of elements in the input vectors.
     sx:
-        Real array, dimension (1 + (n - 1) * aindex_offset(incx))
+        Real array, dimension (1 + (n - 1) * abs(incx))
     incx:
         Storage spacing between elements of sx.
     sy:
-        Real array, dimension (1 + (n - 1) * aindex_offset(incy))
+        Real array, dimension (1 + (n - 1) * abs(incy))
     incy:
         Storage spacing between elements of sy.
     index_offset:
