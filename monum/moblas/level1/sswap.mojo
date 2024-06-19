@@ -1,12 +1,14 @@
 from collections import InlineList
 
 fn sswap(n: Int, inout sx: InlineList[Float32], incx: Int,
-        inout sy: InlineList[Float32], incy: Int, index_offset: Int = 1):
+            inout sy: InlineList[Float32], incy: Int,
+            index_offset: Int = 1):
     """
     This function interchanges two vectors.
     uses unrolled loops for increments equal to 1.
 
     Arguments:
+    ----------
     n :
         Number of elements in the input vectors.
     inout sx:

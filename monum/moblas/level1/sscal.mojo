@@ -1,12 +1,13 @@
 from collections import InlineList
 
-fn sscal(n: Int, sa: Float32, inout sx: InlineList[Float32],
-        incx: Int, index_offset: Int = 1):
+fn sscal(n: Int, sa: Float32, inout sx: InlineList[Float32], incx: Int,
+            index_offset: Int = 1):
     """
     This function scales a vector by a constant.
     uses unrolled loops for increments equal to 1.
 
     Arguments:
+    ----------
     n :
         Number of elements in the input vectors.
     sa :

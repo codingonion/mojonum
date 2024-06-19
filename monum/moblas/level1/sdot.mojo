@@ -1,12 +1,14 @@
 from collections import InlineList
 
 fn sdot(n: Int, sx: InlineList[Float32], incx: Int,
-        sy: InlineList[Float32], incy: Int, index_offset: Int = 1) -> Float32:
+        sy: InlineList[Float32], incy: Int,
+        index_offset: Int = 1) -> Float32:
     """
     This function forms the dot product of two vectors,
     uses unrolled loops for increments equal to 1.
 
     Arguments:
+    ----------
     n :
         Number of elements in the input vectors.
     sx:
@@ -21,6 +23,7 @@ fn sdot(n: Int, sx: InlineList[Float32], incx: Int,
         Index offset.
 
     Return:
+    ----------
         The dot product of two vectors.
     """
 

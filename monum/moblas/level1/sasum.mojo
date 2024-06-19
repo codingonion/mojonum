@@ -1,7 +1,7 @@
-
 from collections import InlineList
 
-fn sasum(n: Int, sx: InlineList[Float32], incx: Int, index_offset: Int = 1) -> Float32:
+fn sasum(n: Int, sx: InlineList[Float32], incx: Int,
+            index_offset: Int = 1) -> Float32:
     """
     This function forms the sum of the absolute values.
     uses unrolled loops for increment equal to 1.
@@ -18,12 +18,13 @@ fn sasum(n: Int, sx: InlineList[Float32], incx: Int, index_offset: Int = 1) -> F
         Index offset.
 
     Return:
+    ----------
         The sum of the absolute values.
     """
 
     var stemp: Float32 = 0.0
     if n <= 0 or incx <= 0:
-        return sasum
+        return stemp
     if incx == 1:
         # code for increment equal to 1
         var m = n % 6

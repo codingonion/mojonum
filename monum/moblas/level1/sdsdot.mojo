@@ -1,12 +1,14 @@
 from collections import InlineList
 
 fn sdsdot(n: Int, sb: Float32, sx: InlineList[Float32], incx: Int,
-            sy: InlineList[Float32], incy: Int, index_offset: Int = 1) -> Float32:
+            sy: InlineList[Float32], incy: Int,
+            index_offset: Int = 1) -> Float32:
     """
     This function computes the inner product of two vectors
     with extended precision accumulation.
 
     Arguments:
+    ----------
     n :
         Number of elements in the input vectors.
     sb :
@@ -23,6 +25,7 @@ fn sdsdot(n: Int, sb: Float32, sx: InlineList[Float32], incx: Int,
         Index offset.
 
     Return:
+    ----------
         The inner product of two vectors.
     """
 

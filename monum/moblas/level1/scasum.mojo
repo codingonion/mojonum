@@ -1,7 +1,8 @@
 from collections import InlineList
 from complex import ComplexFloat32, abs
 
-fn scasum(n: Int, cx: InlineList[ComplexFloat32], incx: Int, index_offset: Int = 1) -> Float32:
+fn scasum(n: Int, cx: InlineList[ComplexFloat32], incx: Int,
+            index_offset: Int = 1) -> Float32:
     """
     This function takes the sum of the (|Re(.)| + |Im(.)|)'s of
     a complex vector and returns a single precision result.
@@ -18,6 +19,7 @@ fn scasum(n: Int, cx: InlineList[ComplexFloat32], incx: Int, index_offset: Int =
         Index offset.
 
     Return:
+    ----------
         The sum of the (|Re(.)| + |Im(.)|)'s of a complex vector
     """
 

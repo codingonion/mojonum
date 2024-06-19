@@ -1,12 +1,14 @@
 from collections import InlineList
 
 fn saxpy(n: Int, sa: Float32, sx: InlineList[Float32], incx: Int,
-        inout sy: InlineList[Float32], incy: Int, index_offset: Int = 1):
+            inout sy: InlineList[Float32], incy: Int,
+            index_offset: Int = 1):
     """
     This function forms a constant times a vector plus a vector.
     uses unrolled loops for increments equal to 1.
 
     Arguments:
+    ----------
     n :
         Number of elements in the input vectors.
     sa :
